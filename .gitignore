@@ -1,0 +1,6 @@
+apidocs
+doxygen.log
+CMakeLists.txt.user
+.directory
+*.kdev4
+/build*/
