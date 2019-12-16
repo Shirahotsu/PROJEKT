@@ -105,7 +105,7 @@ export default function MiniDrawer() {
       >
         <Toolbar>
           <IconButton
-            color="inherit"
+            color="secondary"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
