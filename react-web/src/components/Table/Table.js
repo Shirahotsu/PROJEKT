@@ -18,6 +18,22 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      position: 'relative',
+      width: '90%',
+      left: '5%',
+      marginTop: '5%'
+    }
+  },
+  mainTable: {
+    position: 'absolute'
+  }
+}));
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -44,6 +60,7 @@ const tableIcons = {
 };
 
 export default function Table() {
+  const classes = useStyles();
   const [state, setState] = React.useState({
     columns: [
       { title: 'Kategoria', field: 'category' },
@@ -61,14 +78,9 @@ export default function Table() {
   });
 
   return (
-    <div
-      style={{
-        maxWidth: '80%',
-        marginLeft: '10%',
-        marginTop: '5%'
-      }}
-    >
+    <div className={classes.root}>
       <MaterialTable
+        className={classes.mainTable}
         icons={tableIcons}
         title="Lista wydatków"
         columns={state.columns}
