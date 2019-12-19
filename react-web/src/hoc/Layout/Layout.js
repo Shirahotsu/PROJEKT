@@ -3,6 +3,7 @@ import 'typeface-roboto';
 import Aux from './../Auxiliary/Auxiliary';
 import MiniDrawer from '../../components/MiniDrawer/MiniDrawer';
 import Table from '../../components/Table/Table';
+import FormDialog from '../../components/FormDialog/FormDialog';
 
 class Layout extends Component {
   render() {
@@ -10,6 +11,7 @@ class Layout extends Component {
       <Aux>
         <MiniDrawer />
         <Table />
+        <FormDialog />
       </Aux>
     );
   }
