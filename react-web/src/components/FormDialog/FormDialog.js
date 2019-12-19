@@ -61,10 +61,24 @@ export default function FormDialog(props) {
           <TextField
             autoFocus
             margin="dense"
-            id="name"
-            label="Email Address"
-            type="email"
+            id="category"
+            label="Kategoria"
+            type="text"
             fullWidth
+          />
+          <TextField
+            margin="dense"
+            id="name"
+            label="Nazwa"
+            type="text"
+            fullWidth
+          />
+          <TextField
+            margin="dense"
+            id="value"
+            label="Kwota"
+            type="number"
+            size="medium"
           />
         </DialogContent>
         <DialogActions>
