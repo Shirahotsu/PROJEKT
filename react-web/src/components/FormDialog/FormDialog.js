@@ -1,11 +1,11 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
@@ -24,16 +24,42 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function FormDialog(props) {
+export default function FormDialog() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(props.isDialogOpen);
+  const [open, setOpen] = React.useState(false);
+  const [category, setCategory] = React.useState('');
+  const [name, setName] = React.useState('');
+  const [value, setValue] = React.useState('');
 
-  const handleClickOpen = () => {
+  const newData = {
+    category: category,
+    name: name,
+    value: value
+  };
+
+  const handleOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleCategoryChange = event => {
+    setCategory(event.target.value);
+  };
+
+  const handleNameChange = event => {
+    setName(event.target.value);
+  };
+
+  const handleValueChange = event => {
+    setValue(event.target.value);
+  };
+
+  const handleSubmit = () => {
+    console.log(newData);
+    handleClose();
   };
 
   return (
@@ -43,7 +69,7 @@ export default function FormDialog(props) {
           className={classes.addButton}
           color="primary"
           aria-label="add"
-          onClick={handleClickOpen}
+          onClick={handleOpen}
         >
           <AddIcon />
         </Fab>
@@ -59,33 +85,37 @@ export default function FormDialog(props) {
             Wypełnij pola aby dodać nowy wpis
           </DialogContentText>
           <TextField
-            autoFocus
-            margin="dense"
-            id="category"
+            id="outlined-name1"
             label="Kategoria"
-            type="text"
+            value={category}
+            onChange={handleCategoryChange}
+            variant="outlined"
+            margin="dense"
             fullWidth
           />
           <TextField
-            margin="dense"
-            id="name"
+            id="outlined-name2"
             label="Nazwa"
-            type="text"
+            value={name}
+            onChange={handleNameChange}
+            variant="outlined"
+            margin="dense"
             fullWidth
           />
           <TextField
-            margin="dense"
-            id="value"
+            id="outlined-name3"
             label="Kwota"
-            type="number"
-            size="medium"
+            value={value}
+            onChange={handleValueChange}
+            variant="outlined"
+            margin="dense"
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Anuluj
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleSubmit} color="primary">
             Dodaj
           </Button>
         </DialogActions>
